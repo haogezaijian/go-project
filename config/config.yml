@@ -1,0 +1,8 @@
+app:
+  name: FirstGolangProject
+  port: :8989
+
+database:
+  Dsn: root:jhy251809@tcp(127.0.0.1:3306)/first_golang_project?charset=utf8mb4&parseTime=True&loc=Local
+  MaxIdleConns: 10
+  MaxOpenconns: 100
