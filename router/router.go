@@ -3,6 +3,7 @@ package router
 import (
 	"github.com/gin-gonic/gin"
 	"go-project/controllers"
+	"go-project/middlewares"
 )
 
 func SetupRouter() *gin.Engine {
@@ -22,5 +23,11 @@ func SetupRouter() *gin.Engine {
 		auth.POST("/register", controllers.Registry)
 	}
 
+	api := r.Group("/api")
+	api.GET("/exchangeRates", controllers.GetExchangeRates)
+	api.Use(middlewares.AuthMiddleWare())
+	{
+		api.POST("/exchangeRates", controllers.CreateExchangeRate)
+	}
 	return r
 }
